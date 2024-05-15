@@ -43,12 +43,14 @@ export async function transactionRoutes(app: FastifyInstance) {
 
     let sessionId = request.cookies.sessionId
 
+    console.log(sessionId)
+
     if (!sessionId) {
       sessionId = randomUUID()
 
       reply.cookie('sessionId', sessionId, {
         path: '/',
-        maxAge: 1000 * 60 * 60 * 7, // 7 days
+        maxAge: 60 * 60 * 7, // 7 days
       })
     }
 
